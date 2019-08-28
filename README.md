@@ -5,7 +5,7 @@ Get the block formatting context for all the parents of a given DOM element.
 
 Sooner or later, you may come across unexpected results when working with floats or overflow within a flexbox item. From googling around, you'll run across [this page on MDN](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Block_formatting_context) with some rules on it which describe how a new block formatting context can be created.
 
-That's when you'll realize that you can't keep all these rules in your head as you look over the DOM structure and try to figure out what's wrong. You might want a bit of code you can run in your browser that will tell you which elements of a specific DOM element are creating a new block formatting context.
+That's when you'll realize that you can't keep all these rules in your head as you look over the DOM structure and try to figure out what's wrong. You might want a bit of code you can run in your browser that will tell you which parents of a specific DOM element are establishing a new block formatting context.
 
 ## How to use it
 
@@ -18,15 +18,15 @@ That's when you'll realize that you can't keep all these rules in your head as y
     ```
 5. You will see an array of objects, each one representing a DOM element. They are listed from the `<html>` root inwards, so your desired element will be at the end of the array. Each object looks like this:
     ```javascript
-        {
-            "id": "wiki-column-container",
-            "className": "wiki-left-present",
-            "tagName": "DIV",
-            "newBFC": true,
-            "newBFCReasons": [
-                "blockElementWithoutOverflowVisible"
-            ]
-        },
+    {
+        "id": "wiki-column-container",
+        "className": "wiki-left-present",
+        "tagName": "DIV",
+        "newBFC": true,
+        "newBFCReasons": [
+            "blockElementWithoutOverflowVisible"
+        ]
+    },
     ```
     The `newBFC` boolean tells you whether this element establishes a new block formatting context. The `newBFCReasons` array tells you the list of matching rules that explain why a new block formatting context is established. For more on how these work, see the source code.
 
