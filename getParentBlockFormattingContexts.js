@@ -1,5 +1,3 @@
-
-
 const testParentPropertyValue = (element, propertyName, propertyValueTest) => {
     if (element.parentElement) {
         const parentElementStyle = window.getComputedStyle(element.parentElement);
